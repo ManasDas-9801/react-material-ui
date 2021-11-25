@@ -1,17 +1,25 @@
-import React from "react";
-import { Autocomplete, TextField } from "@mui/material";
+import React,{useState} from "react";
+import { Autocomplete, TextField, Button,  } from "@mui/material";
+import LoadingButton from '@mui/lab/LoadingButton';
 const Auto = () => {
+
+  const [status,setStatus] = useState(false);
   return (
     <React.Fragment>
-      <Autocomplete
+      {/* <Autocomplete
         disablePortal
         options={top100Films}
         sx={{ width: 300, mx: "auto", mt: 10,px:4, }}
         renderInput={(params) => <TextField {...params} label="Movie" />}
-      />
-      
-     
-      
+      /> */}
+      <Button variant="contained" color="success">
+        Success
+      </Button>
+      <LoadingButton loading={status} onClick={() =>  setStatus(true) } loadingIndicator="Loading..." variant="outlined">
+        Fetch data
+      </LoadingButton>
+
+
     </React.Fragment>
   );
 };
