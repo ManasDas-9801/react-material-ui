@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AppBar, Toolbar, Typography, IconButton, Button, Fab, styled, Box, Modal, TextField, Stack, Card, CardContent, CardMedia, CardActions, CardActionArea } from '@mui/material';
+import { AppBar,Paper, Toolbar, Typography, IconButton, Button, Fab, styled, Box, Modal, TextField, Stack, Card, CardContent, CardMedia, CardActions, CardActionArea } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import MenuIcon from '@mui/icons-material/Menu';
 import AddIcon from '@mui/icons-material/Add';
@@ -56,6 +56,7 @@ function Appbar() {
     const [rawData, setRawData] = useState(raw);
 
     const insert = () => {
+        console.log('hello');
         let copy = [...rawData];
         copy = [...copy, { id: copy.length + 1, content: userData, status: true }];
         setRawData(copy);
@@ -69,6 +70,11 @@ function Appbar() {
     }
     return (
         <>
+           <Paper>
+               <Typography var="h2" color='error' sx={{ textAlign:'center'}} gutterBottom>
+                        To Do list
+               </Typography>
+           </Paper>
             <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0 }}>
                 <Toolbar>
                     <IconButton size="large" edge="start" color="inherit" sx={{ mr: 2 }}>
@@ -100,7 +106,7 @@ function Appbar() {
                 <Box sx={boxStyle}>
                     <Stack spacing={2} direction="row">
                         <TextField label="To Do List" color="secondary" focused onChange={(e) => setUserData(e.currentTarget.value)} />
-                        <Button variant="outlined" startIcon={<SendIcon />}>
+                        <Button variant="outlined" startIcon={<SendIcon />}  onClick={() => insert() } type="submit">
                             Add
                         </Button>
                     </Stack>
